@@ -21,7 +21,7 @@
         <div class="flex flex-col space-y-2 py-5 items-start">
             <h3 class="text-xl font-bold">NEWSLETTER</h3>
             <p class="text-3lg">Ikuti update terbaru dari kami, untuk gaya skena lo yang makin solid.</p>
-            <x-form-input id="Newsletter" width="full" name="email" placeholder="email@example.com" />
+            <x-form-input type="email" id="Newsletter" width="full" name="email" placeholder="email@example.com" />
         </div>
     </div>
     <hr class="h-[2px] my-8 mx-10 bg-[#0000005b] border-0">
