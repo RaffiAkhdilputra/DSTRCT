@@ -1,42 +1,36 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Forms;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Livewire\Layout;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
+use Livewire\Form;
 
-#[Layout('livewire.layouts.app')]
-class Register extends Component
+#[Layout('layouts.app')]
+
+class LoginForm extends Form
 {
-    #[Validate('required|string|max:255')]
-    public $name;
-
-    #[Validate('required|email|unique:users,email|max:255')]
     public $email;
-
-    #[Validate('required|string|min:8|confirmed')]
     public $password;
 
-    public $password_confirmation;
-
-    public function register()
+    public function submit()
     {
-        $this->validate();
-
-        User::create([
-            'name' => $this->name,
+        $credentials = [
             'email' => $this->email,
-            'password' => Hash::make($this->password),
-        ]);
+            'password' => $this->password,
+        ];
 
-        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/');
+        } else {
+            // Authentication failed
+            $this->addError('email', 'Email atau password salah.');
+        }
     }
 
     public function render()
     {
-        return view('livewire.register');
+        return view('livewire.login');
     }
 }
