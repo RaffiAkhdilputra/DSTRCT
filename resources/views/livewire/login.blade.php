@@ -21,10 +21,10 @@
             <form class="flex flex-col space-y-3 w-full">
                 <x-form-input wire:model type="email" id="email" width="full" name="email" placeholder="Email" border="dark"/>
                 <x-form-input wire:model type="password" id="password" width="full" name="password" placeholder="Password" border="dark"/>
-                <div class="flex items-center justify-between space-x-2">
+                <div class="flex items-start justify-between space-x-2">
                     <a href="#">Belum punya akun? daftar disini.</a>
                     {{-- BUAT KOMPONEN INPUT BUTTON --}}
-                    <button>LOGIN</button>
+                    <x-form-input-btn wire:click="login" width="1/3">Login</x-form-input-btn>
                 </div>
             </form>
 

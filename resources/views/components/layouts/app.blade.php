@@ -1,3 +1,7 @@
+@php
+    $hideLayout = request()->routeIs('login') || request()->routeIs('register');
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,6 +11,8 @@
         <title>{{ $title ?? config('app.name') }}</title>
 
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +20,14 @@
     </head>
     <body class="font-sans">
         <main>
-            @if (!Route::has('login'))
-            <x-navigation />
+            @if (!$hideLayout)
+                <x-navigation />
             @endif
-            
+
             {{ $slot }}
 
-            @if (!Route::has('login'))
-            <x-footer />
+            @if (!$hideLayout)
+                <x-footer />
             @endif
         </main>
     </body>
