@@ -10,6 +10,13 @@ use Livewire\Component;
 #[Title('DSTRCT | Home')]
 class Index extends Component
 {
+    public string $name;
+
+    public function mount()
+    {
+        $this->name = auth()->check() ? auth()->user()->name : 'Guest';
+    }
+
     public function render()
     {
         return view('livewire.index');
