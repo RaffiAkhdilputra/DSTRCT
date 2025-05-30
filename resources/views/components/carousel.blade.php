@@ -17,7 +17,7 @@
 
     <!-- Slider Contents -->
     <div class="absolute z-30 flex space-x-3 rtl:space-x-reverse -translate-y-1/2 bottom-5 translate-x-1/2 left-1">
-        <div class="flex flex-col text-white">
+        <div class="flex flex-col text-white space-y-4">
             <h3 class="text-5lg">FINAL SALE</h3>
             <h1 class="text-5xl font-bold">UP TO 40% OFF</h1>
             <h3 class="text-5lg mb-3">25/25 COLLECTIONS</h3>

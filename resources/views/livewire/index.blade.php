@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="flex flex-col">
     {{-- Carousels --}}
     <x-carousel/>
@@ -102,4 +103,32 @@
         </div>
     </div>
 
+=======
+<div>
+    <div class="flex flex-row">
+        {{-- Carousels --}}
+        <x-carousel/>
+    </div>
+    <div class="mx-40 my-20">
+        <h2 class="text-3xl font-bold text-center mb-8" style="color: #16302B">Why District</h2>
+        <div class="grid grid-cols-4 gap-x-20">
+            <div class="place-items-center">
+                <img src="/images/icon/delivery.png" alt="Free Delivery" class="w-24 h-24 mb-4">
+                <h4 class="text-lg font-bold">FREE DELIVERY</h4>
+            </div>
+            <div class="place-items-center">
+                <img src="/images/icon/return.png" alt="Easy & Fast Return" class="h-24 mb-4">
+                <h4 class="text-lg font-bold text-center">EASY & FAST RETURN</h4>
+            </div>
+            <div class="place-items-center">
+                <img src="/images/icon/support.png" alt="24/7 Support" class="w-24 h-24 mb-4">
+                <h4 class="text-lg font-bold text-center">24/7 SUPPORT</h4>
+            </div>
+            <div class="place-items-center">
+                <img src="/images/icon/payment.png" alt="Secure Payment" class="w-24 h-24 mb-4">
+                <h4 class="text-lg font-bold text-center">SECURE PAYMENT</h4>
+            </div>
+        </div>
+    </div>
+>>>>>>> Stashed changes
 </div>
