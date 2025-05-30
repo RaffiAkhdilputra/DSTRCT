@@ -18,7 +18,6 @@
                         <path d="M93.1258 69.6483C95.1544 69.6832 97.2198 69.6831 99.2507 69.6134C99.2852 68.4122 99.2852 67.2109 99.2138 65.9771C97.1852 65.9399 95.1544 65.9399 93.1258 65.9771C93.0912 67.2132 93.0912 68.4145 93.1258 69.6483Z" fill="white"/>
                         <path d="M80.542 44.6213C80.4108 48.1345 80.4775 51.6476 80.5098 55.1632C83.8601 55.1632 87.1781 55.1957 90.5284 55.1306C89.6097 51.6174 88.4906 48.1693 87.5719 44.6886C85.2393 44.5887 82.8745 44.6213 80.542 44.6213Z" fill="white"/>
                     </svg>
-                    {{-- <img src="/images/icon/delivery.png" alt="Free Delivery" class="w-24 h-24 mb-4"> --}}
                     <h4 class="text-lg font-bold mt-4">FREE DELIVERY</h4>
                 </div>
                 <div class="place-items-center">
@@ -30,7 +29,6 @@
                         <path d="M62 38.5L39 27L16 38.5M62 38.5V61.5L39 73L16 61.5V38.5M62 38.5L39 50M16 38.5L39 50M39 50V71.7222M51.7778 52.5556V43.6111L28.7778 32.1111" stroke="white" stroke-linecap="round"/>
                         <path d="M39 12.5556C18.5655 12.5556 2 29.0961 2 49.5C2 59.7532 6.18309 69.0308 12.9382 75.7242M33.7143 28.3889L44.2857 12.5556L28.4286 2M39 86.2797C59.4345 86.2797 76 69.7391 76 49.3352C76 39.082 71.8169 29.8044 65.0618 23.111M44.2857 70.6111L33.7143 86.4444L49.5714 97" stroke="#16302B" stroke-width="3" stroke-linecap="round"/>
                     </svg>
-                    {{-- <img src="/images/icon/return.png" alt="Easy & Fast Return" class="h-24 mb-4"> --}}
                     <h4 class="text-lg font-bold text-center mt-4">EASY & FAST RETURN</h4>
                 </div>
                 <div class="place-items-center">
@@ -39,7 +37,6 @@
                         <path d="M49.0349 0C21.954 0 0 21.954 0 49.0369C0 76.1197 21.954 98.0738 49.0369 98.0738C76.1197 98.0738 98.0738 76.1197 98.0738 49.0369C98.0717 21.954 76.1177 0 49.0349 0ZM48.2046 12.7383C66.8758 12.7383 71.8071 29.7671 71.8071 29.7671L68.9696 30.0654C68.9696 30.0654 64.3386 17.2182 48.7285 17.2182C33.1185 17.2182 27.5907 32.3063 27.5907 32.3063H25.648C25.648 32.3084 29.5314 12.7383 48.2046 12.7383ZM58.833 85.3354H38.0316H20.886C20.886 80.789 22.4861 76.549 25.249 72.982C29.5011 67.4884 36.5101 63.591 44.6618 62.6055H44.6638C45.0951 62.5531 45.5283 62.5027 45.9677 62.4685V62.6055H50.8788V62.4241C60.8099 63.0529 69.286 67.9842 73.5724 74.965C75.4849 78.0805 76.5651 81.6052 76.5651 85.3354H58.833ZM77.1838 43.6602C77.0346 48.4404 71.0594 47.5436 71.0594 47.5436C71.1844 47.2534 71.136 45.875 71.001 44.0371C70.9929 44.162 70.9909 44.2849 70.9809 44.4119C70.8055 46.7879 70.5879 48.7326 70.3622 50.3589C70.8841 49.9175 71.3718 49.45 71.8051 48.9422C71.8051 48.9422 73.1432 47.993 74.0924 49.8913C74.4511 50.6068 72.6636 51.959 69.8886 53.3838C69.1248 57.8072 68.6553 59.1151 70.3279 62.4221C70.3279 62.4221 62.2992 62.7849 59.3932 59.0849C58.6395 59.3086 57.9946 59.4234 57.5311 59.4819C54.8448 61.0235 51.7433 61.9163 48.4303 61.9163C44.5771 61.9163 41.0041 60.7192 38.0478 58.6838C35.4259 62.8111 26.8289 62.4221 26.8289 62.4221C29.2956 57.5432 27.103 57.0233 26.176 44.4099C25.8959 42.7352 25.8435 40.994 26.0571 39.2226C27.0103 32.264 29.8477 27.7116 33.1124 24.729C33.1406 24.7028 33.1588 24.6867 33.1588 24.6867C39.0937 19.298 46.4191 19.0864 46.4191 19.0864C54.1496 17.978 60.03 20.622 64.0041 24.7109L63.998 24.6867C63.998 24.6867 68.351 28.6064 70.2191 35.7806C69.945 33.2213 69.7133 31.2604 69.7133 31.2604H70.3098H73.4475C76.9419 32.5603 77.1817 35.4441 77.1817 35.4441V43.6602H77.1838Z" fill="white"/>
                         <path d="M49.0772 59.9858C45.2804 60.0724 44.4179 58.7786 44.4179 58.7786C44.4179 58.7786 42.6062 56.707 44.7625 55.2419C46.9188 53.7748 48.7265 54.3491 48.7265 54.3491C48.7265 54.3491 52.4406 54.5527 53.2165 56.2777C53.2165 56.2777 57.2852 55.9573 61.8276 54.597C64.2015 50.367 64.3769 45.0488 63.9214 42.0904C51.7816 37.4876 46.419 28.9631 46.419 28.9631C41.6208 42.0904 30.3475 39.6419 33.7029 50.7277C34.5251 53.8111 35.9216 55.8324 37.3162 57.1644C38.3863 58.039 39.5692 58.7766 40.8268 59.3852C41.1774 59.5102 41.4374 59.5767 41.5502 59.6009C41.385 59.5747 41.2278 59.5303 41.0646 59.4981C43.3075 60.54 45.7984 61.1385 48.4323 61.1385C52.4466 61.1385 56.1406 59.7742 59.101 57.499C56.9769 58.0632 54.9334 58.4441 53.2165 58.5207C53.2165 58.5187 52.8719 59.8991 49.0772 59.9858Z" fill="white"/>
                     </svg>
-                    {{-- <img src="/images/icon/support.png" alt="24/7 Support" class="w-24 h-24 mb-4"> --}}
                     <h4 class="text-lg font-bold text-center mt-4">24/7 SUPPORT</h4>
                 </div>
                 <div class="place-items-center">
@@ -48,59 +45,55 @@
                         <path d="M49.0369 0C21.954 0 0 21.954 0 49.0369C0 76.1197 21.954 98.0738 49.0369 98.0738C76.1177 98.0738 98.0738 76.1197 98.0738 49.0369C98.0738 21.954 76.1197 0 49.0369 0ZM75.7167 75.5695H22.1858C22.1858 75.5695 17.4742 76.1338 17.4742 71.4383V28.8018L17.5286 28.8361C17.4923 28.5721 17.4701 28.3081 17.4762 28.0522C17.4883 27.4778 17.5991 26.9236 17.8127 26.3896C18.9392 23.5562 22.5102 22.5606 22.6614 22.5203L22.7984 22.4841H73.4656V24.6041H23.0947C22.5647 24.7754 20.4184 25.5593 19.7776 27.1796C19.3947 28.1489 19.6244 29.3298 20.4587 30.6901H75.7146V44.4381L54.6272 44.4401C54.5687 44.4441 48.7124 44.9479 48.7124 52.3761C48.7124 59.8083 55.131 60.3081 55.2418 60.3142H75.7146V75.5695H75.7167ZM24.064 26.8773V26.1699V25.4626H72.5225V26.1699V26.8773H24.064ZM72.5225 28.0945V28.8018V29.5092H24.064V28.8018V28.0945H72.5225ZM80.5996 59.6048H55.2418C55.2418 59.6048 49.4198 59.23 49.4198 52.3741C49.4198 45.5183 54.6775 45.1434 54.6775 45.1434H80.5976V59.6048H80.5996Z" fill="white"/>
                         <path d="M54.6775 52.3722C54.6775 53.6176 55.6871 54.6272 56.9305 54.6272C58.1759 54.6272 59.1856 53.6176 59.1856 52.3722C59.1856 51.1268 58.1759 50.1191 56.9305 50.1191C55.6871 50.1191 54.6775 51.1268 54.6775 52.3722Z" fill="white"/>
                     </svg>
-                    {{-- <img src="/images/icon/payment.png" alt="Secure Payment" class="w-24 h-24 mb-4"> --}}
                     <h4 class="text-lg font-bold text-center mt-4">SECURE PAYMENT</h4>
                 </div>
             </div>
         </div>
         
         
-        <div class="h-100 bg-[#16302B]">
-            {{-- BELOM BENER TOLONG FIX --}}
-            {{-- <div class="bg-[#16302B] flex flex-row flex-wrap gap-4 py-20 px-10 justify-center">
-                <!-- Kolom kiri: Shirt besar -->
-                <div class="w-full h-100 md:w-1/2">
-                    <div class="w-full aspect-[3/4]">
-                        <img class="w-full h-full object-cover" src="{{ asset('images/home-shirts.webp') }}" alt="shirts image">
+        <div class="bg-[#16302B] px-40 py-20">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="w-full h-120 bg-cover bg-center relative border border-white" style="background-image: url('{{ asset('images/home-shirts.webp') }}')">
+                    <div class="absolute bottom-12 left-12">
+                        <h2 class="text-4xl font-bold text-white mb-4">Shirts</h2>
+                        <x-button-secondary width="38" heigth="10" rounded="full" textSize="sm">Show More</x-button-secondary>
                     </div>
                 </div>
-        
-                <!-- Kolom kanan: Accessories, Trousers, Shoes -->
-                <div class="gap-4 w-full h-50 md:w-1/2">
-                    <!-- Accessories -->
-                    <div class="w-full aspect-video">
-                        <img class="w-full h-full object-cover" src="{{ asset('images/home-accessories.jpeg') }}" alt="accessories image">
-                    </div>
-        
-                    <!-- Trousers & Shoes dalam satu baris -->
-                    <div class="flex gap-4">
-                        <div class="w-1/2 aspect-square">
-                            <img class="w-full h-full object-cover" src="{{ asset('images/home-trousers.jpeg') }}" alt="trousers image">
-                        </div>
-                        <div class="w-1/2 aspect-square">
-                            <img class="w-full h-full object-cover" src="{{ asset('images/home-shoes.png') }}" alt="shoes image">
+                <div class="grid grid-rows-2 gap-6">
+                    <div class="w-full bg-cover bg-center relative border border-white" style="background-image: url('{{ asset('images/home-accessories.jpeg') }}')">
+                        <div class="absolute bottom-12 left-12">
+                            <h2 class="text-4xl font-bold text-white mb-4">Accessories</h2>
+                            <x-button-secondary width="38" heigth="10" rounded="full" textSize="sm">Show More</x-button-secondary>
                         </div>
                     </div>
-                </div>
-            </div> --}}
-        </div>
-
-        
-    {{-- Most Popular --}}
-    <div class="flex flex-col items-center justify-center">
-        <div class="flex flex-col w-[60%]">
-            <h1 class="text-3xl text-[#16302B] font-bold text-center py-20 px-10">Most Popular</h1>
-            <a class="text-lg text-[#16302B]" href="#">See All</a>
-            <div class="flex flex-col w-full pb-20">
-                <div class="flex flex-row flex-wrap gap-5 align-center justify-start">
-                    <x-card/>
-                    <x-card/>
-                    <x-card/>
-                    <x-card/>
-                    <x-card/>
-                    <x-card/>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="w-full bg-cover bg-center relative border border-white" style="background-image: url('{{ asset('images/home-trousers.jpeg') }}')">
+                            <div class="absolute bottom-12 left-12">
+                                <h2 class="text-4xl font-bold text-white mb-4">Trousers</h2>
+                                <x-button-secondary width="38" heigth="10" rounded="full" textSize="sm">Show More</x-button-secondary>
+                            </div>
+                        </div>
+                        <div class="w-full bg-cover bg-center relative border border-white" style="background-image: url('{{ asset('images/home-shoes.png') }}')">
+                            <div class="absolute bottom-12 left-12">
+                                <h2 class="text-4xl font-bold text-white mb-4">Shoes</h2>
+                                <x-button-secondary width="38" heigth="10" rounded="full" textSize="sm">Show More</x-button-secondary>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+    {{-- Most Popular --}}
+    <div class="mx-40 my-20">
+        <h2 class="text-3xl font-bold text-center mb-12" style="color: #16302B">Most Popular</h2>
+        <div class="grid justify-items-center grid-cols-3 gap-y-12">
+            <x-card/>
+            <x-card/>
+            <x-card/>
+            <x-card/>
+            <x-card/>
+            <x-card/>
         </div>
     </div>
 </div>
