@@ -11,10 +11,13 @@ use Livewire\Form;
 
 class LoginForm extends Form
 {
+    #[Validate('required|email')]
     public $email;
+
+    #[Validate('required')] // Basic required validation for password
     public $password;
 
-    public function submit()
+    public function login()
     {
         $credentials = [
             'email' => $this->email,
@@ -24,13 +27,9 @@ class LoginForm extends Form
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/');
         } else {
-            // Authentication failed
             $this->addError('email', 'Email atau password salah.');
+            $this->addError('password', 'Email atau password salah.');
         }
     }
 
-    public function render()
-    {
-        return view('livewire.login');
-    }
 }

@@ -18,17 +18,19 @@
                 <hr class="w-full h-px bg-[#0000005b] border-0">
                 <span class="absolute px-3 text-[#16302B] -translate-x-50% bg-white left-50%">or</span>
             </div>
-            <form class="flex flex-col space-y-3 w-full">
-                <x-form-input wire:model type="email" id="email" width="full" name="email" placeholder="Email" border="dark"/>
-                <x-form-input wire:model type="password" id="password" width="full" name="password" placeholder="Password" border="dark"/>
+
+            <form class="flex flex-col space-y-3 w-full" wire:submit="login">
+                <x-form-input wire="email" type="email" id="email" width="full" name="email" placeholder="Email" border="dark" required/>
+                <x-form-input wire="password" type="password" id="password" width="full" name="password" placeholder="Password" border="dark" required/>
                 @error('email')
                 <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
                 <div class="flex items-start justify-between space-x-2">
                     <a href="/create-new-account">Belum punya akun? daftar disini.</a>
-                    <x-form-input-btn wire:click="login" width="1/3">Login</x-form-input-btn>
+                    <x-form-input-btn type="submit" width="1/3" :isLoading="$isLoading">Login</x-form-input-btn>
                 </div>
             </form>
+
         </div>
     </div>
 </div>

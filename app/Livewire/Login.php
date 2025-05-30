@@ -19,8 +19,12 @@ class Login extends Component
     #[Validate('required')]
     public $password;
 
-    public function submit()
+    public bool $isLoading = false;
+
+    public function login()
     {
+        $this->isLoading = true;
+
         $this->validate();
 
         $credentials = [
@@ -30,9 +34,12 @@ class Login extends Component
 
         if (Auth::attempt($credentials)) {
             session()->regenerate();
+            $this->isLoading = false;
             return redirect()->intended('/');
         } else {
-            $this->addError('email', 'Email atau password salah.');
+            $this->addError('email', 'Email tidak ditemukan.');
+            $this->addError('password', 'Password salah.');
+            $this->isLoading = false;
         }
     }
 
