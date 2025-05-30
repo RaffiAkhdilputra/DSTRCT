@@ -1,13 +1,11 @@
-@props(['type', 'width'=>'full', 'height'=> '12', 'rounded' => 'full', 'isLoading' => false])
+@props(['type'=>'submit', 'width'=>'full', 'height'=> '12', 'rounded' => 'full', 'isLoading' => false])
 
 @php
     $widthClass = "w-{$width} h-{$height}";
     $loadingClass = $isLoading ? '' : 'hidden';
 @endphp
 
-<button
-    type="{{ $type }}"
-    class="bg-[#16302B] text-white rounded-{{ $rounded }} text-center {{ $widthClass }} px-4 justify-center flex items-center"
+<button type="{{ $type }}" class="bg-[#16302B] text-white rounded-{{ $rounded }} text-center {{ $widthClass }} px-4 justify-center flex items-center"
     {{ $attributes->class(['opacity-75 cursor-not-allowed' => $isLoading]) }}
     {{ $attributes->except('class') }}
     {{ $isLoading ? 'disabled' : '' }}

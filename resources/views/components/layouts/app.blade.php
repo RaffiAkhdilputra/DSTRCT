@@ -1,5 +1,6 @@
 @php
     use Illuminate\Support\Facades\Auth;
+    use Livewire\Title;
 
     $isLogged = Auth::check();
     $hideLayout = request()->routeIs('login') || request()->routeIs('register');
@@ -10,9 +11,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{{ $title ?? config('app.name') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <title>{{ $title ?? config('app.name') }}</title>
 
     {{-- Tailwind dan Flowbite --}}
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
