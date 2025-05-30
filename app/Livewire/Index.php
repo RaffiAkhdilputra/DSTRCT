@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Layout;
-use Livewire\Title;
+use Livewire\Attribute\Title;
 use Livewire\Component;
 
 #[Layout('layouts.app')]

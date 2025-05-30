@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Livewire\Attributes\Validate;
 
-#[Layout('livewire.layouts.app')]
+#[Layout('layouts.app')]  // Consistent layout
 class Register extends Component
 {
     #[Validate('required|string|max:255')]
@@ -27,6 +27,8 @@ class Register extends Component
     {
         $this->validate();
 
+        $this->isLoading = true;
+
         User::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -34,6 +36,7 @@ class Register extends Component
         ]);
 
         session()->flash('success', 'Registrasi berhasil! Silakan login.');
+        $this->isLoading = false;
         return redirect()->route('login');
     }
 
