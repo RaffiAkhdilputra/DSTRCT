@@ -1,7 +1,7 @@
 @props(['title' => 'title', 'href' => '#', 'image' => 'images/post-card1.jpg'])
 
-<div class="max-w-sm p-3 bg-white border border-gray-200"> 
-    <div class="w-full h-80 bg-cover bg-center rounded-3xl mb-5" style="background-image: {{ $image }}"></div>
+<div class="max-w-sm p-3 bg-white"> 
+    <div class="w-full h-80 bg-cover bg-center rounded-3xl mb-5" style="background-image: url('{{ asset($image) }}')"></div>
     <a href="#">
         <h5 class="mb-2 text-lg font-semibold text-[#16302B]">{{ $title }}</h5>
     </a>
