@@ -1,26 +1,32 @@
-<div>
-    <div class="h-100 bg-cover bg-center relative overflow-hidden" style="background-image: url('{{ asset('images/shop-banner.jpg') }}')">
-        <div class="absolute top-0 right-0 mx-40 mt-10">
-            <x-search-bar></x-search-bar>
+@php
+    $currentPage = 1;
+    $totalPages = 10;
+@endphp
+
+<div class="flex flex-col items-center justify-center">
+    <div class="flex flex-row w-[85%] py-10">
+        <div class="w-1/4">
+            <div class="flex flex-col space-y-5 pr-20">
+                <h3 class="text-3xl text-[#16302B] font-bold">Filter Options</h3>
+                <form wire:submit.prevent="filter">
+                    <div class="flex flex-col space-y-2">
+                        <x-form-input type="text" id="search" name="search" placeholder="Search" />
+                        <x-form-input type="text" id="category" name="category" placeholder="Category" />
+                        <x-form-input type="text" id="color" name="color" placeholder="Color" />
+                        <x-form-input type="text" id="size" name="size" placeholder="Size" />
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="absolute bottom-8 left-0 mx-60 text-white space-y-5">
-            <h1 class="text-[24rem] font-bold transform translate-y-2/5">SHOP</h1>
+        <div class="flex flex-col items-center justify-center w-3/4 h-[full + 100px] ">
+            <div class="grid grid-cols-3 gap-5">
+                @foreach (range(1, 12) as $i)
+                    <div class="my-3">
+                        <a href=""><x-card/></a>
+                    </div>
+                @endforeach
+            </div>
+            <x-pagination :currentPage="$currentPage" :totalPages="$totalPages" />
         </div>
     </div>
-
-    <div class="h-screen">
-
-    </div>
-
-    <div class="mx-40 my-40">
-        <h3 class="text-3xl font-bold mb-10" style="color: #16302B">Explore Our Recommendation</h3>
-        <p class="font-semibold text-right mb-5 pe-2"><a href="#">See All</a></p>
-
-        <div class="mb-10 grid grid-cols-3 gap-12 justify-items-center">
-            <x-card></x-card>
-            <x-card></x-card>
-            <x-card></x-card>
-        </div>
-    </div>
-
 </div>

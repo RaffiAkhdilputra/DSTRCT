@@ -16,7 +16,7 @@
     </a>
     <ul class="flex flex-row space-x-10">
         <x-nav-links href="{{ route('index') }}">Home</x-nav-links>
-        <x-nav-links href="{{ route('shop') }}">Shop</x-nav-links>
+        <x-nav-links href="{{ route('shop', ['currentPage' => 1]) }}">Shop</x-nav-links>
         <x-nav-links href="{{ route('blog') }}">Blog</x-nav-links>
     </ul>
     <div class="flex flex-row space-x-5">
