@@ -87,7 +87,9 @@
     {{-- Most Popular --}}
     <div class="mx-40 my-20">
         <h2 class="text-3xl font-bold text-center mb-12" style="color: #16302B">Most Popular</h2>
-        <div class="grid justify-items-center grid-cols-3 gap-y-12">
+        <p class="font-semibold text-right mb-5 pe-2"><a href="#">See All</a></p>
+
+        <div class="grid grid-cols-3 gap-12 justify-items-center">
             <x-card/>
             <x-card/>
             <x-card/>
