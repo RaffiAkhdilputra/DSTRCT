@@ -1,56 +1,63 @@
 @props([
     'currentPage' => 1,
     'totalPages' => 1,
-    'nextLinks' => null,
-    'prevLinks' => null,
 ])
+
+@php
+    $currentPage = max(1, $currentPage);
+    $totalPages = max(1, $totalPages);
+
+    $isDisabled = $currentPage <= 1 || $currentPage >= $totalPages;
+
+    if($isDisabled) {
+        echo 'disabled';
+    }
+@endphp
 
 <nav aria-label="Pagination" class="mt-6">
     <ul class="inline-flex items-center space-x-1 text-sm">
         {{-- Previous --}}
         <li>
-            <a 
-                href="{{ $prevLinks ?? '#' }}"
-                @if($currentPage <= 1)
-                    class="pointer-events-none bg-[#16302BDD] text-white px-4 py-2 rounded-l-lg border border-[#16302B]/50 transition"
-                @else
-                    wire:click.prevent="$set('currentPage', {{ $currentPage - 1 }})"
-                    class="bg-white text-[#16302B] px-4 py-2 rounded-l-lg border border-[#16302B] hover:bg-[#16302B] hover:text-white transition"
-                @endif
+            <button
+                class="px-4 py-2 rounded-l-lg border transition
+                    {{ $currentPage <= 1 
+                        ? 'bg-[#16302B]/60 text-white border-[#16302B]/50 cursor-not-allowed' 
+                        : 'bg-white text-[#16302B] border-[#16302B] hover:bg-[#16302B] hover:text-white' }}"
             >
                 Previous
-            </a>
+            </button>
         </li>
 
         {{-- Page Numbers --}}
         @foreach (range(1, $totalPages) as $page)
             <li>
-                <a 
-                    href="#"
-                    wire:click.prevent="$set('currentPage', {{ $page }})"
+                <button 
+                    wire:click="$set('page', {{ $page }})"
                     class="px-4 py-2 rounded-md border transition
                         {{ $page == $currentPage 
-                            ? 'bg-[#16302B] text-white font-semibold border-[#16302B]'
+                            ? 'bg-[#16302B] text-white font-semibold border-[#16302B]' 
                             : 'bg-white text-[#16302B] border-[#16302B] hover:bg-[#16302B] hover:text-white' }}"
                 >
                     {{ $page }}
-                </a>
+                </button>
             </li>
         @endforeach
 
         {{-- Next --}}
         <li>
-            <a 
-                href="{{ $nextLinks ?? '#' }}"
+            <button 
                 @if($currentPage >= $totalPages)
-                    class="pointer-events-none bg-[#16302B]/60 text-white px-4 py-2 rounded-r-lg border border-[#16302B]/50 transition"
+                    disabled
                 @else
-                    wire:click.prevent="$set('currentPage', {{ $currentPage + 1 }})"
-                    class="bg-white text-[#16302B] px-4 py-2 rounded-r-lg border border-[#16302B] hover:bg-[#16302B] hover:text-white transition"
+                    wire:click="$set('page', {{ $currentPage + 1 }})"
                 @endif
+                class="px-4 py-2 rounded-r-lg border transition
+                    {{ $currentPage >= $totalPages 
+                        ? 'bg-[#16302B]/60 text-white border-[#16302B]/50 cursor-not-allowed' 
+                        : 'bg-white text-[#16302B] border-[#16302B] hover:bg-[#16302B] hover:text-white' }}"
             >
                 Next
-            </a>
+            </button>
         </li>
     </ul>
 </nav>

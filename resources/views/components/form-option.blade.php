@@ -1,7 +1,8 @@
-@props(['value', 'label', 'name'])
+@props(['value', 'label', 'name', 'wire' => null])
 
 <div class="flex flex-row items-center justify-start space-x-3 py-1 w-full">
     <input 
+        wire:model="{{ $wire }}"
         type="radio" 
         id="{{ $value }}" 
         name="{{ $name }}" 
