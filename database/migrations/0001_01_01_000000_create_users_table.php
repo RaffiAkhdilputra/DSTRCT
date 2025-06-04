@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('wishlist')->nullable();
-            $table->string('cart')->nullable();)
+            $table->string('cart')->nullable();
             $table->timestamps();
         });
 
