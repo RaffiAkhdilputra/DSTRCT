@@ -5,14 +5,16 @@
     $username = auth()->user()->name;
     $email = auth()->user()->email;
     $profilePicture = auth()->user()->profile_picture;
+    $phone = $user->phone ?? 'Nomor telepon belum ditambahkan';
+    $address = $user->address ?? 'Alamat Belum ditambahkan';
 
 @endphp
 
 <div>
-    <div class="h-screen border place-content-center">
+    <div class="place-content-center">
         <div class="grid grid-cols-2 mx-40 py-20 text-[#16302B]">
-            <div class="basis-2/5 place-items-center place-self-center space-y-8 border">
-                <h3 class="text-3xl font-bold border">Profile</h3>
+            <div class="basis-2/5 place-items-center place-self-center space-y-8">
+                <h3 class="text-3xl font-bold">Profile</h3>
 
                 <div class="w-[200px] h-[200px] relative">
                     @if (auth()->user()->profile_picture == null)
@@ -30,39 +32,38 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 place-items-center border">
+                <div class="flex flex-row space-x-5">
                     <div>
                         <x-form-input-btn bgColor="#A38560" wire:click="logout">Logout</x-form-input-btn>
                     </div>
                     <div>
-                        {{-- BUTTON EDIT --}}
-                        <p>Button edit profile</p>
+                        <x-button-secondary width="30" href="{{ route('profile.{user}.edit', ['user' => auth()->user()->name]) }}">Edit Profile</x-button-secondary>
                     </div>
                 </div>
             </div>
 
-            <div class="basis-3/5 space-y-8 place-content-center border">
+            <div class="basis-3/5 space-y-8 place-content-center">
+                <div>
+                    <h5 class="font-medium mb-2">Email Address:</h5>
+                    <p class="font-bold">{{ $email }}</p>
+                </div>
                 <div>
                     <h5 class="font-medium mb-2">Name:</h5>
-                    <p class="font-bold">Name</p>
+                    <p class="font-bold">{{ $username }}</p>
                 </div>
                 <div>
                     <h5 class="font-medium mb-2">Phone Number:</h5>
-                    <p class="font-bold">Name</p>
-                </div>
-                <div>
-                    <h5 class="font-medium mb-2">Email Address:</h5>
-                    <p class="font-bold">Name</p>
+                    <p class="font-bold">{{ $phone }}</p>
                 </div>
                 <div>
                     <h5 class="font-medium mb-2">Address:</h5>
-                    <p class="font-bold">Name</p>
+                    <p class="font-bold">{{ $address }}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="mx-40 my-40 border">
+    <div class="mx-40 my-40">
         <x-history></x-history>
     </div>
 </div>
