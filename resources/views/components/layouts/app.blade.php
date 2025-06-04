@@ -27,7 +27,7 @@
 
     @livewireStyles
 </head>
-<body class="font-sans">
+<body class="font-sans text-gray-800">
     <main>
         @if ($isLogged && !$hideLayout)
             <x-navigation-logged />
