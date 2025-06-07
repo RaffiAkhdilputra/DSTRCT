@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Livewire\Attributes\Validate;
 
-#[Layout('layouts.app')]  // Consistent layout
+#[Layout('layouts.app')]
+
 class Register extends Component
 {
     #[Validate('required|string|max:255')]

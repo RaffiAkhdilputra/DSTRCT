@@ -1,22 +1,39 @@
-@props(['type'=>'submit', 'width'=>'full', 'height'=> '12', 'rounded' => 'full', 'bgColor' => '#16302B', 'isLoading' => false])
+@props([
+    'width' => '28',
+    'height' => '12',
+    'rounded' => 'full',
+    'inverted' => false,
+    'isLoading' => false,
+    'disabled' => false,
+])
 
 @php
+    $isDisabled = $isLoading || $disabled;
+
     $widthClass = "w-{$width} h-{$height}";
-    $loadingClass = $isLoading ? '' : 'hidden';
+    $roundedClass = "rounded-{$rounded}";
+
+    $bgColor = $inverted ? 'bg-white border border-[#16302B] text-[#16302B]' : 'bg-[#16302B] text-white hover:bg-[#12251f]';
+    $stateClass = $isDisabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'transition duration-200';
+
+    $classes = "{$bgColor} {$roundedClass} text-center {$widthClass} px-4 justify-center flex items-center {$stateClass}";
 @endphp
 
-<button type="{{ $type }}" class="bg-[{{ $bgColor }}] text-white rounded-{{ $rounded }} text-center {{ $widthClass }} px-4 justify-center flex items-center"
-    {{ $attributes->class(['opacity-75 cursor-not-allowed' => $isLoading]) }}
-    {{ $attributes->except('class') }}
-    {{ $isLoading ? 'disabled' : '' }}
+<button 
+    type="button"
+    class="{{ $classes }}"
+    {{ $attributes }}
+    @if ($isDisabled) disabled @endif
 >
     {{ $slot }}
 
-    <div role="status" class="{{ $loadingClass }}">
-        <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-        </svg>
-        <span class="sr-only">Loading...</span>
-    </div>
+    @if ($isLoading)
+        <div role="status" class="ml-2">
+            <svg aria-hidden="true" class="w-5 h-5 text-gray-200 animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.6c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50zM9.1 50.6c0 22.6 18.3 41 40.9 41s40.9-18.3 40.9-41-18.3-41-40.9-41S9.1 28 9.1 50.6z" fill="currentColor"/>
+                <path d="M94 39c2.4-.6 3.9-3.1 3.1-5.5-1.7-4.7-4.1-9.2-7.2-13.2C85.8 15.1 80.9 10.7 75.2 7.4c-5.7-3.3-12-5.4-18.5-6.3-5-.7-10.1-.7-15.1 0-2.5.3-4.1 2.7-3.5 5.1.6 2.5 3.1 4.1 5.6 3.6 4.3-.7 8.7-.7 13 0 5 .8 9.8 2.6 14.2 5.3 4.4 2.7 8.3 6.2 11.4 10.3 2.3 2.9 4.2 6.1 5.7 9.5.9 2.3 3.3 3.7 5.7 3z" fill="currentFill"/>
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+    @endif
 </button>

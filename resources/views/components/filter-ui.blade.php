@@ -2,7 +2,7 @@
     <h3 class="text-3xl font-bold">Filter Options</h3>
 
     {{-- Search --}}
-    <div>
+    {{-- <div>
         <h3 class="text-xl font-bold">Search</h3>
         <x-form-input
             type="text"
@@ -12,7 +12,7 @@
             border="dark"
             wire="search"
         />
-    </div>
+    </div> --}}
 
     {{-- Category --}}
     <div>

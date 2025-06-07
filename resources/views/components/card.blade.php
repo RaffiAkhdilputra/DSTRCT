@@ -3,11 +3,12 @@
     'productPrice' => 'Harga Items',
     'productImage' => asset('images/home-shirts.webp'),
     'mainCategory' => 'Main Category',
-    'productRating' => '4.9'
+    'productRating' => '4.9',
+    'href' => '#'
 ])
 
 <div class="w-[353px] h-[450px] relative rounded-xl overflow-hidden shadow-lg shadow-[#16302B]">
-    <a href="">
+    <a href="{{ $href }}">
 
         {{-- Gambar produk  --}}
         <img class="w-full h-full object-cover" src="{{ $productImage }}" alt="content image">
@@ -20,7 +21,7 @@
                 <h1 class="text-lg font-bold">{{ $productTitle }}</h1>
                 <p class="text-sm">{{ $mainCategory }}</p>
             </div>
-            <x-button-secondary-icon>
+            <x-button-secondary-icon href="{{ $href }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 h-5 text-white" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m13-9l2 9M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/>
