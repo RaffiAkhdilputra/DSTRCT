@@ -3,11 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Layout;
-use Livewire\Attribute\Title;
+use Livewire\Title;
 use Livewire\Component;
 
 #[Layout('layouts.app')]
 #[Title('DSTRCT | Home')]
+
 class Index extends Component
 {
     public string $name;

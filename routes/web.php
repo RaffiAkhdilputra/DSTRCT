@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\ProductController; gakepake
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', App\Livewire\Index::class)->name('index');
@@ -20,3 +21,5 @@ Route::get('/', App\Livewire\Index::class)->name('index');
 Route::get('/profile/user/{user}', App\Livewire\Profile::class)->name('profile.{user}');
 Route::get('/blog', App\Livewire\Blog::class)->name('blog');
 Route::get('/shop/page-{currentPage}', App\Livewire\Shop::class)->name('shop');
+Route::get('/product/{slug}', App\Livewire\Show::class)->name('product');
+
