@@ -6,7 +6,7 @@
     ];
 @endphp
 
-<div class="flex flex-col space-y-6 p-6">
+<div class="flex flex-col space-y-6 p-6 min-w-[20vw]">
     {{-- Search --}}
     <div class="flex flex-col space-y-2">
         <h3 class="text-xl font-bold">Search</h3>
@@ -59,25 +59,18 @@
     </div>
 
     {{-- Price Range --}}
-    <div class="flex flex-col space-y-2">
+    <div class="relative flex flex-col space-y-2">
         <h3 class="text-xl font-bold">Price Range</h3>
-        <div class="flex space-x-2">
-            <x-form-input
-                type="number"
-                id="minPrice"
-                name="minPrice"
-                placeholder="Min"
-                wire:model.live.debounce.500ms="minPrice"
-                border="dark"
-            />
-            <x-form-input
-                type="number"
-                id="maxPrice"
-                name="maxPrice"
-                placeholder="Max"
-                wire:model.live.debounce.500ms="maxPrice"
-                border="dark"
-            />
+        <input
+            type="range"
+            min="{{ $minPrice }}"
+            max="{{ $absoluteMaxPrice }}"
+            wire:model.live="maxPrice"
+            class="w-full h-2 bg-gray-200  rounded-lg appearance-none [&amp;::-webkit-slider-thumb]:bg-[#A38560] cursor-pointer"
+        />
+        <div class="flex flex-row justify-between">
+            <span class="text-[#16302B]">{{ number_format($minPrice) }}</span>
+            <span class="text-[#16302B]">{{ number_format($maxPrice) }}</span>
         </div>
     </div>
 </div>

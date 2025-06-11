@@ -13,8 +13,9 @@ class Shop extends Component
     public $search = '';
     public $category = 'all';
     public $selectedPromotions = [];
-    public $minPrice = 0;
-    public $maxPrice = 5000000;
+    public $minPrice = 200000;
+    public $maxPrice = 2000000;
+    public $absoluteMaxPrice = 2000000;
     public $perPage = 9;
 
     protected $queryString = [
