@@ -12,6 +12,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{user}/edit-profile', App\Livewire\EditProfile::class)->name('profile.{user}.edit');
     Route::get('/blog-post', App\Livewire\BlogPost::class)->name('blog-post');
     Route::get('/wishlist', App\Livewire\Wishlist::class)->name('wishlist');
+    Route::get('/cart', App\Livewire\Cart::class)->name('cart');
+    Route::get('/payment', App\Livewire\Payment::class)->name('payment');
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -26,4 +28,6 @@ Route::get('/shop/page-{currentPage}', App\Livewire\Shop::class)->name('shop');
 Route::get('/product/{slug}', App\Livewire\Show::class)->name('product');
 Route::get('/blog-post', App\Livewire\BlogPost::class)->name('blog-post');
 Route::get('/wishlist', App\Livewire\Wishlist::class)->name('wishlist');
+Route::get('/cart', App\Livewire\Cart::class)->name('cart');
+Route::get('/payment', App\Livewire\Payment::class)->name('payment');
 
