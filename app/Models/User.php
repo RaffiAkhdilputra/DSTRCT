@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Product;
 
 class User extends Authenticatable
 {
@@ -41,4 +43,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * The wishlist that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function wishlist(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'wishlist', 'user_id', 'product_id');
+    }
+
+
+    // public function cart(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Product::class, 'cart', 'user_id', 'product_id')
+    //                 ->withPivot('quantity', 'size', 'color')
+    //                 ->withTimestamps();
+    // }
+
+    // Kurang Order
 }

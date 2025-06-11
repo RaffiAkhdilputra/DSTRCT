@@ -15,25 +15,25 @@
                 <span class="absolute px-3 text-[#16302B] -translate-x-50% bg-white left-50%">or</span>
             </div>
             <form class="flex flex-col space-y-3 w-full" wire:submit.prevent="register">
-                <x-form-input wire="name" type="text" id="name" width="full" name="name" placeholder="Name" border="dark" required/>
+                <x-form-input wire:model="name" type="text" id="name" width="full" name="name" placeholder="Name" border="dark" required/>
                 @error('name')
                     <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
-                <x-form-input wire="email" type="email" id="email" width="full" name="email" placeholder="Email" border="dark" required/>
+                <x-form-input wire:model="email" type="email" id="email" width="full" name="email" placeholder="Email" border="dark" required/>
                 @error('email')
                     <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
-                <x-form-input wire="password" type="password" id="password" width="full" name="password" placeholder="Password" border="dark" required/>
+                <x-form-input wire:model="password" type="password" id="password" width="full" name="password" placeholder="Password" border="dark" required/>
                 @error('password')
                     <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
-                <x-form-input wire="confirm_password" type="password" id="confirm-password" width="full" name="confirm_password" placeholder="Confirm Password" border="dark" required/>
+                <x-form-input wire:model="confirm_password" type="password" id="confirm-password" width="full" name="confirm_password" placeholder="Confirm Password" border="dark" required/>
                 @error('confirm_password')
                     <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
                 <div class="flex items-start justify-between space-x-2">
                     <a href="/login">Sudah punya akun? login disini.</a>
-                    <x-form-input-btn type="submit" width="1/3" :isLoading="False">Sign Up</x-form-input-btn>
+                    <x-form-input-btn wire:click="register" type="submit" width="1/3" :isLoading="False">Sign Up</x-form-input-btn>
                 </div>
             </form>
         </div>

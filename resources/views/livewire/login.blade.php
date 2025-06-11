@@ -20,14 +20,14 @@
             </div>
 
             <form class="flex flex-col space-y-3 w-full" wire:submit="login">
-                <x-form-input wire="email" type="email" id="email" width="full" name="email" placeholder="Email" border="dark" required/>
-                <x-form-input wire="password" type="password" id="password" width="full" name="password" placeholder="Password" border="dark" required/>
+                <x-form-input wire:model="email" type="email" id="email" width="full" name="email" placeholder="Email" border="dark" required/>
+                <x-form-input wire:model="password" type="password" id="password" width="full" name="password" placeholder="Password" border="dark" required/>
                 @error('email')
                 <p class="text-red-500 text-sm italic">{{ $message }}</p>
                 @enderror
                 <div class="flex items-start justify-between space-x-2">
                     <a href="/create-new-account">Belum punya akun? daftar disini.</a>
-                    <x-form-input-btn type="submit" width="1/3" :isLoading="$isLoading">Login</x-form-input-btn>
+                    <x-form-input-btn wire:click="login" type="submit" width="1/3" :isLoading="$isLoading">Login</x-form-input-btn>
                 </div>
             </form>
 
