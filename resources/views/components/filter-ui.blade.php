@@ -1,6 +1,14 @@
-<div>
+@php
+    $promoTags = [
+        'new-arrival' => 'New Arrival',
+        'best-seller' => 'Best Seller',
+        'on-discount' => 'On Discount',
+    ];
+@endphp
+
+<div class="flex flex-col space-y-6 p-6">
     {{-- Search --}}
-    {{-- <div>
+    <div class="flex flex-col space-y-2">
         <h3 class="text-xl font-bold">Search</h3>
         <x-form-input
             type="text"
@@ -8,45 +16,50 @@
             name="search"
             placeholder="Search products..."
             border="dark"
-            wire="search"
+            wire:model.live.debounce.300ms="search"
         />
-    </div> --}}
+    </div>
     
     {{-- Category --}}
-    <div>
+     <div class="flex flex-col space-y-2">
         <h3 class="text-xl font-bold">Category</h3>
-        <fieldset wire:model.defer="category" class="space-y-1">
-            @foreach (['all', 'accessories', 'shirts', 'trousers', 'shoes'] as $cat)
-                <x-form-option 
+        <fieldset class="space-y-1">
+            <x-form-option
+                name="category"
+                value="all"
+                label="All"
+                wire:model.live="category"
+            />
+
+            @foreach ($availableCategories as $cat)
+                <x-form-option
                     name="category"
-                    value="{{ $cat }}" 
+                    value="{{ $cat }}"
                     label="{{ ucfirst($cat) }}"
+                    wire:model.live="category"
                 />
             @endforeach
         </fieldset>
     </div>
-    
+
     {{-- Promotions (multi checkbox) --}}
     <div>
         <h3 class="text-xl font-bold">Promotions</h3>
         <div class="flex flex-col space-y-1">
-            @foreach (['New Arival', 'Best Seller', 'On Discount'] as $tag)
-                <label class="flex items-center space-x-2">
-                    <x-form-select
-                        id="tag-{{ $tag }}"
-                        name="tag-{{ $tag }}"
-                        placeholder="{{ $tag }}"
-                        type="checkbox"
-                        wire:model="selectedTags"
-                        value="{{ $tag }}"
-                    />
-                </label>
+            @foreach ($promoTags as $value => $label)
+                <x-form-select
+                    id="promo-{{ $value }}"
+                    name="promotions"
+                    wire:model.live="selectedPromotions"
+                    value="{{ $value }}"
+                    label="{{ $label }}"
+                />
             @endforeach
         </div>
     </div>
-    
+
     {{-- Price Range --}}
-    <div>
+    <div class="flex flex-col space-y-2">
         <h3 class="text-xl font-bold">Price Range</h3>
         <div class="flex space-x-2">
             <x-form-input
@@ -54,7 +67,7 @@
                 id="minPrice"
                 name="minPrice"
                 placeholder="Min"
-                wire:model="minPrice"
+                wire:model.live.debounce.500ms="minPrice"
                 border="dark"
             />
             <x-form-input
@@ -62,7 +75,7 @@
                 id="maxPrice"
                 name="maxPrice"
                 placeholder="Max"
-                wire:model="maxPrice"
+                wire:model.live.debounce.500ms="maxPrice"
                 border="dark"
             />
         </div>

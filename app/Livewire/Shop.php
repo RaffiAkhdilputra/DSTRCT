@@ -12,23 +12,25 @@ class Shop extends Component
 
     public $search = '';
     public $category = 'all';
-    public $selectedTags = [];
+    public $selectedPromotions = [];
     public $minPrice = 0;
     public $maxPrice = 5000000;
-    public $perPage = 9; // Set default number of items per page
+    public $perPage = 9;
 
     protected $queryString = [
-        'search' => ['except' => ''], 
-        'category' => ['except' => 'all'], 
-        'selectedTags' => ['except' => []], 
-        'minPrice' => ['except' => 0], 
+        'search' => ['except' => ''],
+        'category' => ['except' => 'all'],
+        'selectedPromotions' => [
+            'except' => ['new-arrival', 'best-seller', 'on-discount'],
+            'as' => 'tags'
+        ],
+        'minPrice' => ['except' => 0],
         'maxPrice' => ['except' => 5000000]
     ];
 
-    // Reset pagination only when filters affecting results change
     public function updated($property)
     {
-        if (in_array($property, ['search', 'category', 'selectedTags', 'minPrice', 'maxPrice'])) {
+        if (in_array($property, ['search', 'category', 'selectedPromotions', 'minPrice', 'maxPrice'])) {
             $this->resetPage();
         }
     }
@@ -45,14 +47,27 @@ class Shop extends Component
             $query->where('category', $this->category);
         }
 
-        if (!empty($this->selectedTags)) {
-            $query->whereIn('tags', $this->selectedTags); // More optimized query
+        if (!empty($this->selectedPromotions)) {
+            foreach ($this->selectedPromotions as $tag) {
+                $query->whereRaw("FIND_IN_SET(?, tags)", [$tag]);
+            }
         }
 
         $query->whereBetween('price', [$this->minPrice, $this->maxPrice]);
 
-        $products = $query->paginate(    $this->perPage);
+        $products = $query->paginate($this->perPage);
 
-        return view('livewire.shop', compact('products'));
+        $availableCategories = Product::select('category')->distinct()->pluck('category')->filter()->toArray();
+
+        $allTags = Product::select('tags')->distinct()->pluck('tags')
+                            ->filter()->flatMap(fn($tags) => explode(',', $tags))
+                            ->map(fn($tag) => trim($tag))
+                            ->unique()
+                            ->sort()
+                            ->values()
+                            ->toArray();
+
+
+        return view('livewire.shop', compact('products', 'availableCategories', 'allTags'));
     }
 }

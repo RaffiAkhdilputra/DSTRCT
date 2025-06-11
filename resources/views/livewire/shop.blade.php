@@ -1,8 +1,8 @@
 <div>
     <div class="h-100 bg-cover bg-center relative overflow-hidden" style="background-image: url('{{ asset('images/shop-banner.jpg') }}')">
-        <div class="absolute top-0 right-0 mx-40 mt-10">
+        {{-- <div class="absolute top-0 right-0 mx-40 mt-10">
             <x-search-bar></x-search-bar>
-        </div>
+        </div> --}}
         <div class="absolute bottom-8 left-0 mx-60 text-white space-y-5">
             <h1 class="text-[24rem] font-bold transform translate-y-2/5">SHOP</h1>
         </div>
