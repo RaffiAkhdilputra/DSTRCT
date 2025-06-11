@@ -37,21 +37,11 @@ class Cart extends Component
         }
     }
 
-    /**
-     * THIS METHOD MUST BE PRESENT AND SPELLED EXACTLY LIKE THIS
-     * It's automatically called by Livewire when $selectedCartItems changes.
-     */
     public function updatedSelectedCartItems()
     {
-        // This logic ensures the 'Select All' checkbox state is updated
-        // based on whether all individual items are selected.
         $this->selectAll = count($this->selectedCartItems) === $this->cartItems->count() && $this->cartItems->isNotEmpty();
     }
 
-    /**
-     * This method is also crucial and must be present.
-     * It's automatically called by Livewire when $selectAll changes.
-     */
     public function updatedSelectAll(bool $value)
     {
         if ($value) {
@@ -82,7 +72,7 @@ class Cart extends Component
         CartItem::destroy($cartItemId);
         $this->loadCartItems();
         $this->selectedCartItems = array_values(array_filter($this->selectedCartItems, fn($id) => $id != $cartItemId));
-        $this->updatedSelectedCartItems(); // Call this to re-evaluate selectAll state
+        $this->updatedSelectedCartItems();
         session()->flash('message', 'Product removed from cart successfully.');
     }
 
@@ -93,6 +83,7 @@ class Cart extends Component
         }
         $this->loadCartItems();
         $this->selectedCartItems = [];
+        $this->totalPrice = 0;
         $this->selectAll = false;
         session()->flash('message', 'Cart cleared successfully.');
     }
@@ -110,19 +101,18 @@ class Cart extends Component
     public function confirmSelectionSingleItem(int $cartItemId)
     {
         $this->selectedCartItems = [$cartItemId];
-        $this->updatedSelectedCartItems(); // Call this to re-evaluate selectAll state
+        $this->updatedSelectedCartItems();
         $this->confirmSelection();
     }
 
     protected function loadCartItems()
     {
         if ($this->userCart->exists) {
-            // Ensure product is eager loaded as it's accessed in blade and getTotalPriceProperty
             $this->cartItems = $this->userCart->items()->with('product')->get();
         } else {
             $this->cartItems = collect();
         }
-        $this->updatedSelectedCartItems(); // Call this to set initial selectAll state
+        $this->updatedSelectedCartItems();
     }
 
     public function render()

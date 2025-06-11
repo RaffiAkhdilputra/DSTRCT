@@ -5,6 +5,9 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Cart as CartModel;
+use App\Models\CartItem;
+use Illuminate\Support\Collection;
 
 class Show extends Component
 {
@@ -13,20 +16,37 @@ class Show extends Component
     public $selectedColor;
     public $quantity;
     public $user;
-    public $wishlistItems = [];
-    public $cartItems = [];
+    public CartModel $userCart;
+    public Collection $wishlistItems;
+    public Collection $cartItems;
 
     public function mount()
     {
         $this->product = Product::where('slug', request()->route('slug'))->firstOrFail();
         $this->quantity = 1;
+        
         $this->selectedSize = $this->product->available_sizes ? explode(',', $this->product->available_sizes)[0] : null;
         $this->selectedColor = $this->product->available_colors ? explode(',', $this->product->available_colors)[0] : null;
 
         $this->user = Auth::user();
 
         if ($this->user) {
+            $this->userCart = CartModel::firstOrCreate(['user_id' => $this->user->id]);
             $this->wishlistItems = $this->user->wishlist()->get();
+        } else {
+            $this->userCart = new CartModel();
+            $this->wishlistItems = collect();
+        }
+
+        $this->loadCartItems();
+    }
+
+    protected function loadCartItems()
+    {
+        if ($this->userCart->exists) {
+            $this->cartItems = $this->userCart->items()->with('product')->get();
+        } else {
+            $this->cartItems = collect();
         }
     }
 
@@ -52,38 +72,49 @@ class Show extends Component
     public function addToCart($productId)
     {
         if (!$this->user) {
+            session()->flash('message', 'Please login to add to cart.');
             return redirect()->route('login');
         }
 
-        $cartItem = $this->user->cart()->where('product_id', $productId)
+        $cartItem = $this->userCart->items()
+            ->where('product_id', $productId)
             ->where('size', $this->selectedSize)
             ->where('color', $this->selectedColor)
             ->first();
 
         if ($cartItem) {
-            $cartItem->pivot->quantity += $this->quantity;
-            $cartItem->pivot->save();
+            $cartItem->quantity += $this->quantity;
+            $cartItem->save();
         } else {
-            $this->user->cart()->attach($productId, [
+            $this->userCart->items()->create([
+                'product_id' => $productId,
                 'quantity' => $this->quantity,
                 'size' => $this->selectedSize,
                 'color' => $this->selectedColor,
             ]);
         }
 
-        $this->cartItems = $this->user->cart()->get();
+        $this->loadCartItems();
         session()->flash('message', 'Product added to cart successfully.');
+        $this->dispatch('cartUpdated');
     }
 
     public function removeFromCart($productId)
     {
         if (!$this->user) {
+            session()->flash('message', 'Please login to remove from cart.');
             return redirect()->route('login');
         }
 
-        $this->user->cart()->detach($productId);
-        $this->cartItems = $this->user->cart()->get();
+        $this->userCart->items()
+            ->where('product_id', $productId)
+            ->where('size', $this->selectedSize)
+            ->where('color', $this->selectedColor)
+            ->delete();
+
+        $this->loadCartItems();
         session()->flash('message', 'Product removed from cart successfully.');
+        $this->dispatch('cartUpdated');
     }
 
     public function addToWishlist($productId)
@@ -124,7 +155,7 @@ class Show extends Component
             'product' => $this->product,
             'recommendedProducts' => $recommendedProducts,
             'wishlist' => $this->wishlistItems,
-            'cart' => $this->user ? $this->user->cart()->get() : [],
+            'cart' => $this->cartItems,
         ]);
     }
 }

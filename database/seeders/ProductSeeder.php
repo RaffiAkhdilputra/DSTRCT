@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
         for ($i = 1; $i <= 20; $i++) {
             $name = 'Product ' . $i;
             $defaultPrice = rand(100000, 500000);
-            $discount = rand(0, 30); // dalam persen
+            $discount = rand(0, 30); // diskon persen
             $price = (int) ($defaultPrice * (1 - $discount / 100));
             $currentRating = rand(1, 5);
             $totalRating = rand(5, 100);

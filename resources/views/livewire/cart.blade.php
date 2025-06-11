@@ -14,7 +14,7 @@
     <div class="mx-40 my-20">
         <div class="flex justify-between mb-6">
             <h2 class="text-2xl font-semibold ml-6">Cart Items ({{ $cartItems->count() }})</h2>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-4">
                 <label class="flex items-center gap-2 cursor-pointer">
                     <input
                         id="selectAll-checkbox"
@@ -25,7 +25,7 @@
                     >
                     <span class="text-lg font-medium">Select All</span>
                 </label>
-                <x-form-input-btn wire:click="removeSelected" width="32" inverted="true" :disabled="empty($selectedCartItems)">Remove Selected</x-form-input-btn>
+                <x-form-input-btn wire:click="removeSelected" width="auto" inverted="true" :disabled="empty($selectedCartItems)">Remove Selected</x-form-input-btn>
             </div>
         </div>
 
@@ -43,9 +43,12 @@
                         <span class="text-xl font-bold">{{ $cartItem->product->brand ?? 'N/A' }}</span>
                     </label>
                     <hr class="w-full border-gray-800 mb-4">
-                    <div class="flex flex-row items-center justify-center gap-6 w-full">
+                    <div class="flex flex-row items-center justify-center gap-6 w-[full/3]">
                         <div class="flex flex-col items-start">
-                            <img src="{{ $cartItem->product->front_image ? asset('storage/' . $cartItem->product->front_image) : asset('images/home-shirts.webp') }}" alt="{{ $cartItem->product->name ?? 'Product' }}" class="w-full h-48 object-cover rounded-lg mb-4">
+
+                            {{-- GAMBARNYA BLM DIGANTI --}}
+                            
+                            <img src="{{ asset('images/image-not-found.png') }}" alt="{{ $cartItem->product->name ?? 'Product' }}" class="w-full h-48 object-cover rounded-lg mb-4">
                         </div>
                         <div class="flex flex-col items-start">
                             <h3 class="text-xl font-semibold">{{ $cartItem->product->name ?? 'N/A' }}</h3>
