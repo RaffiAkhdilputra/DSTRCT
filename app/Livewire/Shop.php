@@ -10,18 +10,27 @@ class Shop extends Component
 {
     use WithPagination;
 
-
     public $search = '';
     public $category = 'all';
     public $selectedTags = [];
     public $minPrice = 0;
     public $maxPrice = 5000000;
+    public $perPage = 9; // Set default number of items per page
 
-    protected $queryString = ['search', 'category', 'selectedTags', 'minPrice', 'maxPrice'];
+    protected $queryString = [
+        'search' => ['except' => ''], 
+        'category' => ['except' => 'all'], 
+        'selectedTags' => ['except' => []], 
+        'minPrice' => ['except' => 0], 
+        'maxPrice' => ['except' => 5000000]
+    ];
 
-    public function updating($property)
+    // Reset pagination only when filters affecting results change
+    public function updated($property)
     {
-        $this->resetPage();
+        if (in_array($property, ['search', 'category', 'selectedTags', 'minPrice', 'maxPrice'])) {
+            $this->resetPage();
+        }
     }
 
     public function render()
@@ -37,17 +46,13 @@ class Shop extends Component
         }
 
         if (!empty($this->selectedTags)) {
-            foreach ($this->selectedTags as $tag) {
-                $query->where('tags', 'like', "%{$tag}%");
-            }
+            $query->whereIn('tags', $this->selectedTags); // More optimized query
         }
 
         $query->whereBetween('price', [$this->minPrice, $this->maxPrice]);
 
-        $products = $query->paginate(9);
+        $products = $query->paginate(    $this->perPage);
 
-        return view('livewire.shop', [
-            'products' => $products
-        ]);
+        return view('livewire.shop', compact('products'));
     }
 }
