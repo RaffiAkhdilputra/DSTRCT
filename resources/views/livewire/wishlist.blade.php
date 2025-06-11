@@ -1,16 +1,18 @@
 <div>
     <div class="mx-40 my-10">
         <div class="flex justify-between">
-            <div class="content-center">
-                <x-button-secondary bgColor="#16302B" width="38">Edit</x-button-secondary>
+            <div class="text-start">
+                <h3 class="text-3xl font-bold">Your Wishlist</h3>
+                <p class="text-lg text-gray-600">Here are the products you have added to your wishlist.</p>
             </div>
+
             <div class="content-center">
                 <x-search-bar></x-search-bar>
             </div>
         </div>
     </div>
 
-    <div class="mx-40 my-20 min-h-[50vh]">
+    <div class="mx-60 my-20 min-h-[50vh]">
         <div class="grid grid-cols-3 gap-12 justify-items-center">
             @forelse ($wishlist as $product)
                 <x-card 
