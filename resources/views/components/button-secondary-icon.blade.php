@@ -4,6 +4,7 @@
     'borderless' => false,
     'inverted' => false,
     'disabled' => false,
+    'btnModel' => false,
 ])
 
 @php
@@ -15,6 +16,17 @@
     $classes = "{$bgColor} rounded-full text-center {$sizeClass} flex items-center justify-center {$borderStyle} {$borderColor} {$stateClass}";
 @endphp
 
-<a href="{{ $href }}" class="{{ $classes }}">
-    {{ $slot }}
-</a>
+@if ($btnModel)
+    <button
+        type="button"
+        class="{{ $classes }}"
+        @if ($disabled) disabled @endif
+        {{ $attributes }}
+    >
+        {{ $slot }}
+    </button>
+@else
+    <a href="{{ $href }}" class="{{ $classes }}">
+        {{ $slot }}
+    </a>
+@endif

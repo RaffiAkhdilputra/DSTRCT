@@ -1,4 +1,4 @@
-@props(['width'=>'full', 'height'=> '12', 'name', 'value' => '', 'id', 'placeholder', 'type', 'border'=>'white', 'wire' => null])
+@props(['width'=>'full', 'height'=> '12', 'name', 'value' => '', 'id', 'placeholder', 'type', 'border'=>'white'])
 
 @php 
     if($border == 'white') {
@@ -16,7 +16,7 @@
         id="{{ $id }}" 
         class="block w-full h-{{ $height }} py-2 px-3 {{ $textColor }} border {{ $border }} rounded-xl shadow-sm focus:outline-none focus:ring-[#A38560] focus:border-[#A38560] sm:text-sm" 
         placeholder="{{ $placeholder }}"
-        wire:model="{{ $wire }}" 
+        {{ $attributes }} 
         name="{{ $name }}"
         value="{{ old($name, $value) }}"
     >

@@ -46,6 +46,12 @@ class Show extends Component
         // ADD TO CART
     }
 
+    public function addToWishlist($productId)
+    {
+        dd("Adding to wishlist: " . $productId);
+        // ADD TO WISHLIST
+    }
+
     public function render()
     {
         $recommendedProducts = Product::where('category', $this->product->category)

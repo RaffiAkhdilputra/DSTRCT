@@ -1,6 +1,4 @@
-<div class="flex flex-col space-y-5 pr-20">
-    <h3 class="text-3xl font-bold">Filter Options</h3>
-
+<div>
     {{-- Search --}}
     {{-- <div>
         <h3 class="text-xl font-bold">Search</h3>
@@ -13,22 +11,21 @@
             wire="search"
         />
     </div> --}}
-
+    
     {{-- Category --}}
     <div>
         <h3 class="text-xl font-bold">Category</h3>
-        <fieldset class="space-y-1">
+        <fieldset wire:model.defer="category" class="space-y-1">
             @foreach (['all', 'accessories', 'shirts', 'trousers', 'shoes'] as $cat)
                 <x-form-option 
+                    name="category"
                     value="{{ $cat }}" 
-                    name="category" 
-                    label="{{ ucfirst($cat) }}" 
-                    model="category" 
+                    label="{{ ucfirst($cat) }}"
                 />
             @endforeach
         </fieldset>
     </div>
-
+    
     {{-- Promotions (multi checkbox) --}}
     <div>
         <h3 class="text-xl font-bold">Promotions</h3>
@@ -39,7 +36,6 @@
                         id="tag-{{ $tag }}"
                         name="tag-{{ $tag }}"
                         placeholder="{{ $tag }}"
-                        wire="selectedTags"
                         type="checkbox"
                         wire:model="selectedTags"
                         value="{{ $tag }}"
@@ -48,7 +44,7 @@
             @endforeach
         </div>
     </div>
-
+    
     {{-- Price Range --}}
     <div>
         <h3 class="text-xl font-bold">Price Range</h3>
@@ -58,7 +54,7 @@
                 id="minPrice"
                 name="minPrice"
                 placeholder="Min"
-                wire="minPrice"
+                wire:model="minPrice"
                 border="dark"
             />
             <x-form-input
@@ -66,7 +62,7 @@
                 id="maxPrice"
                 name="maxPrice"
                 placeholder="Max"
-                wire="maxPrice"
+                wire:model="maxPrice"
                 border="dark"
             />
         </div>
