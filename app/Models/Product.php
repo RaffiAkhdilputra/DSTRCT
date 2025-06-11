@@ -39,6 +39,11 @@ class Product extends Model
         return asset('storage/' . $this->image);
     }
 
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
     /**
      * The users that belong to the Product
      *

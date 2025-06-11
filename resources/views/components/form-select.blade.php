@@ -1,4 +1,4 @@
-@props(['name' => 'name', 'value' => null, 'placeholder'=> 'placeholder'])
+@props(['name' => 'name', 'value' => null, 'options' => [], 'placeholder'=> 'placeholder'])
 
 <div class="flex items-center space-x-3 w-full mt-3">
     <input 

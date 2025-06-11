@@ -11,6 +11,7 @@
     ];
 
     $isInWishlist = $wishlist->contains('id', $product->id);
+    $isInCart = $cart->contains('id', $product->id);
 @endphp
 
 <div x-data="{ filled: false }" class="my-10">
@@ -90,7 +91,18 @@
 
             <div x-data="{}" x-ref="show" class="w-full flex flex-row items-center justify-start gap-2">
                 <x-form-input-btn wire:click="buyNow({{ $product->id }})" width="50">Buy Now</x-form-input-btn>
-                <x-form-input-btn wire:click="addToCart({{ $product->id }})" width="50" inverted="true">Add to Cart</x-form-input-btn>
+                
+                @if ($isInCart)
+                    <x-form-input-btn wire:click="removeFromCart({{ $product->id }})" width="50" inverted="true">
+                        Already in Cart
+                    </x-form-input-btn>
+                @else
+                    <x-form-input-btn wire:click="addToCart({{ $product->id }})" width="50" inverted="true">
+                        Add to Cart
+                    </x-form-input-btn>
+                @endif
+                
+                {{-- <x-form-input-btn wire:click="addToCart({{ $product->id }})" width="50" inverted="true">Add to Cart</x-form-input-btn> --}}
                 <x-button-secondary-icon wire:click="{{ $isInWishlist ? 'removeFromWishlist(' . $product->id . ')' : 'addToWishlist(' . $product->id . ')' }}" btnModel="true" inverted="true" borderless="true" href="#" size="12">
                     <div @click="filled = !filled">
                         @if ($isInWishlist)
@@ -117,7 +129,7 @@
         <div class="flex flex-row items-center justify-center gap-4">
             @foreach ($recommendedProducts as $recommendedProduct)
                 <x-card
-                    href="{{ route('product', $recommendedProduct->slug) }}" {{-- Changed to slug, assuming your route uses slug --}}
+                    href="{{ route('product', $recommendedProduct->slug) }}"
                     productTitle="{{ $recommendedProduct->name }}"
                     productPrice="{{ number_format($recommendedProduct->price, 0, ',', '.') }}"
                     productRating="{{ $recommendedProduct->current_rating }}"

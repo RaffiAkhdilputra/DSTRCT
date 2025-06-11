@@ -14,6 +14,7 @@ class Show extends Component
     public $quantity;
     public $user;
     public $wishlistItems = [];
+    public $cartItems = [];
 
     public function mount()
     {
@@ -50,7 +51,39 @@ class Show extends Component
 
     public function addToCart($productId)
     {
-        dd($productId . ' ' . $this->selectedSize . ' ' . $this->selectedColor . ' ' . $this->quantity);
+        if (!$this->user) {
+            return redirect()->route('login');
+        }
+
+        $cartItem = $this->user->cart()->where('product_id', $productId)
+            ->where('size', $this->selectedSize)
+            ->where('color', $this->selectedColor)
+            ->first();
+
+        if ($cartItem) {
+            $cartItem->pivot->quantity += $this->quantity;
+            $cartItem->pivot->save();
+        } else {
+            $this->user->cart()->attach($productId, [
+                'quantity' => $this->quantity,
+                'size' => $this->selectedSize,
+                'color' => $this->selectedColor,
+            ]);
+        }
+
+        $this->cartItems = $this->user->cart()->get();
+        session()->flash('message', 'Product added to cart successfully.');
+    }
+
+    public function removeFromCart($productId)
+    {
+        if (!$this->user) {
+            return redirect()->route('login');
+        }
+
+        $this->user->cart()->detach($productId);
+        $this->cartItems = $this->user->cart()->get();
+        session()->flash('message', 'Product removed from cart successfully.');
     }
 
     public function addToWishlist($productId)
@@ -91,6 +124,7 @@ class Show extends Component
             'product' => $this->product,
             'recommendedProducts' => $recommendedProducts,
             'wishlist' => $this->wishlistItems,
+            'cart' => $this->user ? $this->user->cart()->get() : [],
         ]);
     }
 }

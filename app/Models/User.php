@@ -54,13 +54,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'wishlist', 'user_id', 'product_id');
     }
 
-
-    // public function cart(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Product::class, 'cart', 'user_id', 'product_id')
-    //                 ->withPivot('quantity', 'size', 'color')
-    //                 ->withTimestamps();
-    // }
+    public function cart(): HasOne
+    {
+        return $this->hasOne(Cart::class);
+    }
 
     // Kurang Order
 }
