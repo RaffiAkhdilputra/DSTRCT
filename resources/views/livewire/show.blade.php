@@ -93,11 +93,11 @@
                 <x-form-input-btn wire:click="buyNow({{ $product->id }})" width="50">Buy Now</x-form-input-btn>
                 
                 @if ($isInCart)
-                    <x-form-input-btn wire:click="removeFromCart({{ $product->id }})" width="50" inverted="true">
+                    <x-form-input-btn wire:click="removeFromCart({{ $product->id }})" bgColor="bg-white border border-[#16302B]" width="50" inverted="true">
                         Already in Cart
                     </x-form-input-btn>
                 @else
-                    <x-form-input-btn wire:click="addToCart({{ $product->id }})" width="50" inverted="true">
+                    <x-form-input-btn wire:click="addToCart({{ $product->id }})" width="50" bgColor="bg-white border border-[#16302B]" inverted="true">
                         Add to Cart
                     </x-form-input-btn>
                 @endif

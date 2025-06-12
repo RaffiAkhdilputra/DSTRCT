@@ -2,6 +2,8 @@
     'width' => '28',
     'height' => '12',
     'rounded' => 'full',
+    'bgColor' => null,
+    'fontColor' => null,
     'inverted' => false,
     'isLoading' => false,
     'disabled' => false,
@@ -12,11 +14,19 @@
 
     $widthClass = "w-{$width} h-{$height}";
     $roundedClass = "rounded-{$rounded}";
+    $stateClass = $isDisabled
+        ? 'opacity-50 cursor-not-allowed pointer-events-none'
+        : 'transition duration-200';
 
-    $bgColor = $inverted ? 'bg-white border border-[#16302B] text-[#16302B]' : 'bg-[#16302B] text-white hover:bg-[#12251f]';
-    $stateClass = $isDisabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'transition duration-200';
+    $baseBgClass = match (true) {
+        $bgColor !== null => $bgColor,
+        $inverted => 'bg-white border border-[#16302B]',
+        default => 'bg-[#16302B] hover:bg-[#12251f]',
+    };
 
-    $classes = "{$bgColor} {$roundedClass} text-center {$widthClass} px-4 justify-center flex items-center {$stateClass}";
+    $textClass = $fontColor ?? ($inverted ? 'text-[#16302B]' : 'text-white');
+
+    $classes = "{$baseBgClass} {$textClass} {$roundedClass} text-center {$widthClass} px-4 justify-center flex items-center {$stateClass}";
 @endphp
 
 <button 

@@ -56,7 +56,6 @@
         </div>
     @endforeach
     
-    {{-- Blok Order Summary, Voucher, Payment hanya muncul sekali di akhir --}}
     <div class="mt-10 space-y-6">
         {{-- Voucher Selection --}}
         <div class="grid grid-cols-2 gap-4 p-4 bg-[#16302B] text-white shadow-lg rounded-lg">
@@ -105,13 +104,9 @@
     
         {{-- Checkout Button --}}
         <div class="justify-items-end">
-            <form>
-                {{-- <form action="{{ route('checkout.submit') }}" method="POST"> --}}
-                @csrf
-                <x-button-secondary width="35">
-                    Buy Now!
-                </x-button-secondary>
-            </form>
+            <x-form-input-btn fontColor="text-white" bgColor="bg-[#A38560]" width="35" wire:click="checkout">
+                Buy Now!
+            </x-form-input-btn>
         </div>
     </div>
 </div>

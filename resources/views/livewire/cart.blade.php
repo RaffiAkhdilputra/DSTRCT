@@ -25,7 +25,7 @@
                     >
                     <span class="text-lg font-medium">Select All</span>
                 </label>
-                <x-form-input-btn wire:click="removeSelected" width="auto" inverted="true" :disabled="empty($selectedCartItems)">Remove Selected</x-form-input-btn>
+                <x-form-input-btn wire:click="removeSelected" fontColor="text-white" width="auto" inverted="true" :disabled="empty($selectedCartItems)">Remove Selected</x-form-input-btn>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                             <p class="text-sm">Size: <span class="text-[#16302B] font-bold">{{ $cartItem->size ?? 'N/A' }}</span></p> {{-- Added size --}}
                             <p class="text-sm">Quantity: <span class="text-[#16302B] font-bold">{{ $cartItem->quantity ?? 'N/A' }}</span></p>
                             <div class="mt-4 flex gap-2">
-                                <x-form-input-btn wire:click="removeFromCart({{ $cartItem->id }})" width="24" inverted="true">Remove</x-form-input-btn>
+                                <x-form-input-btn wire:click="removeFromCart({{ $cartItem->id }})" bgColor="bg-white border border-[#16302B]" width="24" inverted="true">Remove</x-form-input-btn>
                                 <x-form-input-btn wire:click="confirmSelectionSingleItem({{ $cartItem->id }})" width="24">Buy Now</x-form-input-btn>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
 
             <div class="flex justify-end gap-5">
                 <x-form-input-btn wire:click="confirmSelection" width="32" :disabled="empty($selectedCartItems)">Checkout</x-form-input-btn>
-                <x-form-input-btn wire:click="clearCart" width="32" inverted="true" :disabled="$cartItems->isEmpty()">Clear Cart</x-form-input-btn>
+                <x-form-input-btn wire:click="clearCart" fontColor="text-white" width="32" inverted="true" :disabled="$cartItems->isEmpty()">Clear Cart</x-form-input-btn>
             </div>
         </div>
     </div>
