@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0",
+    }
+  },
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/public/build/$1"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/public/storage/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "env": {
+    "APP_NAME": "DSTRCT",
+    "APP_ENV": "production",
+    "APP_KEY": "@app_key",
+    "APP_DEBUG": "false",
+    "APP_URL": "https://dstrct-project.vercel.app",
+
+    "APP_LOCALE": "en",
+    "APP_FALLBACK_LOCALE": "en",
+    "APP_FAKER_LOCALE": "en_US",
+
+    "APP_MAINTENANCE_DRIVER": "file",
+
+    "BCRYPT_ROUNDS": "12",
+
+    "LOG_CHANNEL": "errorlog",
+    "LOG_LEVEL": "error",
+
+    "DB_CONNECTION": "pgsql",
+    "DB_HOST": "@postgres_host",
+    "DB_PORT": "5432",
+    "DB_DATABASE": "@postgres_database",
+    "DB_USERNAME": "@postgres_user",
+    "DB_PASSWORD": "@postgres_password",
+
+    "SESSION_DRIVER": "database",
+    "SESSION_LIFETIME": "120",
+    "SESSION_ENCRYPT": "false",
+    "SESSION_PATH": "/",
+    "SESSION_DOMAIN": "null",
+
+    "BROADCAST_CONNECTION": "log",
+    "FILESYSTEM_DISK": "local",
+    "QUEUE_CONNECTION": "database",
+
+    "CACHE_STORE": "database",
+
+    "MAIL_MAILER": "log", 
+    "MAIL_FROM_ADDRESS": "hello@example.com",
+    "MAIL_FROM_NAME": "DSTRCT",
+
+    "VITE_APP_NAME": "DSTRCT",
+    
+    "APP_CONFIG_CACHE": "/tmp/config.php",
+    "APP_EVENTS_CACHE": "/tmp/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php",
+    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views"
+  },
+  "build": {
+    "env": {
+      "PHP_VERSION": "8.2",
+      "NPM_FLAGS": "--no-audit --ignore-scripts"
+    }
+  }
+}
