@@ -34,7 +34,7 @@
         <div class="my-6 flex flex-col items-center justify-center space-y-2">
             <p class="text-xl font-semibold">Page {{ $products->currentPage() }} of {{ $products->lastPage() }}</p>
             <p class="text-sm text-gray-500">Showing {{ $products->count() }} of {{ $products->total() }} products</p>
-            {{ $products->links('pagination::tailwind') }}
+            {{ $products->links('components.pagination') }}
         </div>
     </div>
 </div>
