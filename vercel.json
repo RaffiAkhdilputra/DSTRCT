@@ -23,7 +23,6 @@
   "env": {
     "APP_NAME": "DSTRCT",
     "APP_ENV": "production",
-    "APP_KEY": "@app_key",
     "APP_DEBUG": "false",
     "APP_URL": "https://dstrct-project.vercel.app",
 
@@ -37,13 +36,6 @@
 
     "LOG_CHANNEL": "errorlog",
     "LOG_LEVEL": "error",
-
-    "DB_CONNECTION": "pgsql",
-    "DB_HOST": "@postgres_host",
-    "DB_PORT": "5432",
-    "DB_DATABASE": "@postgres_database",
-    "DB_USERNAME": "@postgres_user",
-    "DB_PASSWORD": "@postgres_password",
 
     "SESSION_DRIVER": "database",
     "SESSION_LIFETIME": "120",
