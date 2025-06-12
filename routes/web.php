@@ -35,5 +35,4 @@ Route::get('/blog', App\Livewire\Blog::class)->name('blog');
 Route::get('/shop/page-{currentPage}', App\Livewire\Shop::class)->name('shop');
 Route::get('/product/{slug}', App\Livewire\Show::class)->name('product');
 Route::get('/blog-post', App\Livewire\BlogPost::class)->name('blog-post');
-Route::get('/payment', App\Livewire\Payment::class)->name('payment');
 

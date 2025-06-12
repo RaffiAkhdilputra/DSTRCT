@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wishlist', function (Blueprint $table) {
+        Schema::create('pending_payments', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->primary(['user_id', 'product_id']);
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->decimal('amount', 12, 2);
+            $table->string('payment_method');
+            $table->text('notes')->nullable();
+            $table->timestamps();
         });
+
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wishlist');
+        Schema::dropIfExists('pending_payments');
     }
 };

@@ -17,13 +17,11 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->integer('quantity')->default(1);
 
-            // Specify shorter lengths for 'size' and 'color'
-            $table->string('size')->nullable();
-            $table->string('color')->nullable();
+            $table->string('size', 10)->nullable();
+            $table->string('color', 20)->nullable();
 
             $table->timestamps();
 
-            // The unique constraint on the shorter columns will now fit within the limit
             $table->unique(['cart_id', 'product_id', 'size', 'color'], 'cart_item_unique');
         });
 
