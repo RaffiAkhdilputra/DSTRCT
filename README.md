@@ -23,7 +23,9 @@
 
 ## About
 
-**DSTRCT** is a Laravel-based full-stack framework configured with Blade, Vue and Vite. It offers a clean and modular architecture designed to kickstart development quickly with modern tooling.
+**DSTRCT** is a Laravel-based full-stack e-commerce application built for scalability and modern web development. Designed with a clean architecture, DSTRCT leverages Laravel’s powerful backend ecosystem alongside a responsive frontend stack powered by Blade and Vue.js. This project provides a solid foundation for developing custom online stores, marketplaces, or retail systems — all while using modern tools like Vite for blazing-fast frontend compilation.
+
+
 
 ---
 
