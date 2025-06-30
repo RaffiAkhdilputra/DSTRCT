@@ -16,10 +16,8 @@
   - [Installation](#installation)  
   - [Environment Setup](#environment-setup)  
   - [Database Setup](#database-setup)  
-- [Usage](#usage)  
-- [Testing](#testing)  
-- [Contributing](#contributing)  
-- [License](#license)  
+- [Usage](#usage)
+- [Project Structure](#project-structure)
 
 ---
 
@@ -69,3 +67,66 @@ git clone https://github.com/RaffiAkhdilputra/DSTRCT.git
 cd DSTRCT
 composer install
 npm install
+```
+
+### Environment Setup
+
+```bash
+cp .env.example .env
+php artisan key:generate
+# Edit .env to set DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
+```
+
+### Database Setup
+
+```bash
+php artisan migrate
+php artisan db:seed # optional, if seeders are defined
+```
+
+## Usage
+- Run backend
+```bash
+php artisan migrate
+php artisan db:seed # optional, if seeders are defined
+```
+- Compile front-end assets
+```bash
+npm run dev      # for development
+npm run build    # for production
+```
+
+## Project Structure
+```bash
+├── app/                # Laravel application code
+├── bootstrap/          
+├── config/             
+├── database/           # migrations & seeders
+├── public/             # entrypoint, index.php, assets
+├── resources/
+│   ├── js/             # Vue & JS files
+│   └── views/          # Blade templates
+├── routes/             # web.php, api.php
+├── storage/            
+├── tests/              # Unit & Feature tests
+├── vite.config.js      # Vite configuration
+├── package.json
+└── composer.json
+```
+
+## Getting Support
+
+For any issues or questions, please open an issue on the GitHub repository.
+
+---
+
+⚙️ Ready to start developing? Clone, configure, and launch!
+
+---
+
+Note: Badges (build status, downloads) should be updated once you integrate CI/CD tools (e.g., GitHub Actions) and release mechanisms.
+Acknowledgements
+
+---
+
+Based on the default Laravel scaffold; thanks to the Laravel community for the foundation.
